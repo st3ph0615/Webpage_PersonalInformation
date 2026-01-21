@@ -1,0 +1,480 @@
+:root{
+  --bg: #141414;
+  --bg2:#0f0f0f;
+  --cream:#e7dcc4;
+  --cream-soft: rgba(231, 220, 196, 0.35);
+  --text: #e7dcc4;
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+html, body{ height:100%; }
+body{
+  background: radial-gradient(1200px 700px at 50% 35%, #1f1f1f 0%, var(--bg) 55%, var(--bg2) 100%);
+  color: var(--text);
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  overflow-x:hidden;
+}
+
+
+.topbar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 22px 32px;
+  z-index: 20;
+  background: linear-gradient(to bottom, rgba(20,20,20,0.75), rgba(20,20,20,0));
+
+}
+
+.nav{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  gap: 56px;
+}
+
+.nav a {
+  position: relative;
+  color: #e7dcc4;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #e7dcc4;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+
+.hero{
+  min-height: 100vh;
+  padding-top: 86px; 
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+}
+
+.hero-center{
+  position: relative;
+  height: calc(100vh - 86px);
+  display: grid;
+  place-items: center;
+}
+
+
+.side-pill{
+  justify-self: center;
+  align-self: center;
+
+  width: 70px;
+  height: 100vh;
+  border: 1.5px solid rgba(231,220,196,0.6);
+  border-radius: 40px;
+  display: grid;
+  place-items: center;
+  margin-left: 18px;
+}
+
+.side-pill span{
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--cream);
+}
+
+
+.big-name{
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(350px, 16vw, 350px);
+  letter-spacing: 4px;
+  line-height: 0.9;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+
+.big-name--fill{
+  color: var(--cream);
+  z-index: 1;
+}
+
+
+.big-name--stroke{
+  color: transparent;
+  -webkit-text-stroke: 2px var(--cream-soft);
+ 
+  z-index: 5;
+}
+
+.portrait{
+  position: relative;
+  z-index: 3;
+  width: min(520px, 42vw);
+  height: min(981px, 74vh);
+  display: grid;
+  place-items: center;
+  margin-top: -290px;
+}
+
+.portrait img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  filter: drop-shadow(0 22px 30px rgba(0,0,0,0.55));
+}
+
+
+.section{
+  min-height: 60vh;
+  padding: 80px 10vw;
+  border-top: 1px solid rgba(231,220,196,0.1);
+  color: rgba(231,220,196,0.9);
+}
+
+/* ABOUT ME SECTION */
+.about-me {
+  background: #313131;
+  color: #e7dcc4;
+  padding: 90px 8vw 0;
+}
+
+
+.about-top{
+  position: relative;
+  padding: 0 8vw 50px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+
+.about-left{
+  width: 1000px; 
+}
+
+
+.about-right{
+  width: 800px;     
+  margin-top: 78px;       
+  margin-left: 20px;     
+}
+
+
+.about-label{
+  font-size: 18px;
+  margin-bottom: 14px;
+  opacity: .95;
+}
+
+.about-title{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 78px;
+  line-height: 1.05;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.about-sub .course{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.about-sub .school{
+  display: block;
+  font-size: 14px;
+  opacity: .85;
+  margin-top: 2px;
+}
+
+.about-right p{
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(231,220,196,.9);
+}
+
+.about-right strong{
+  color: #fff;
+  font-weight: 600;
+}
+
+
+
+.about-image {
+  width: 100vw;           
+  height:50%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  background: #e5e5e5;
+}
+
+.about-image img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+
+/* EDUCATION SECTION */
+.education{
+  background:#141414;
+  color:#e7dcc4;
+  padding: 80px 0;
+}
+
+.edu-wrap{
+  width: 100%;
+  padding: 0 6vw;
+}
+
+
+.edu-top{
+  display:grid;
+  grid-template-columns: 1.25fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 36px 56px;
+  align-items:start;
+}
+
+
+.edu-photo{
+  background:#d9d9d9;
+  overflow:hidden;
+}
+
+.edu-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.edu-photo--big{
+  height: 300px;
+  width: 100%;
+}
+
+.edu-photo--small{
+  height: 200px;
+  width: 100%;
+}
+
+
+.edu-title h2{
+  font-family:"Poppins", sans-serif;
+  font-weight:600;
+  font-size: 42px;
+  margin-top: -6px;
+}
+
+
+.edu-right{
+  display:flex;
+  flex-direction:column;
+  gap: 22px;
+}
+
+.edu-college h3{
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color:#ffffff;
+}
+
+.edu-school{
+  font-size: 12px;
+  opacity: .9;
+  margin-bottom: 14px;
+}
+
+.edu-college-meta,
+.edu-card-meta{
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+}
+
+.edu-line{
+  width: 2px;
+  height: 64px;
+  background: rgba(231,220,196,0.7);
+  margin-top: 2px;
+}
+
+.edu-years{
+  font-size: 13px;
+  margin-bottom: 6px;
+  color:#ffffff;
+}
+
+.edu-desc{
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: .78;
+  max-width: 430px;
+}
+
+.edu-bottom{
+  margin-top: 54px;
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+}
+
+.edu-card h4{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color:#ffffff;
+}
+
+.edu-strand{
+  font-weight: 700;
+}
+
+.edu-card-school{
+  font-size: 12px;
+  opacity:.88;
+  margin-bottom: 12px;
+}
+.education .line {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 1px;
+  background: rgba(231, 220, 196, 0.6);
+  margin-top: 14px;
+}
+
+/* HOBBIES SECTION */
+.hobbies {
+  background: #313131;
+  color: #e7dcc4;
+  padding: 90px 0;
+}
+
+.hobbies-wrap {
+  padding: 0 8vw;
+}
+
+
+.hobbies-label {
+  font-size: 18px;
+  margin-bottom: 48px;
+  opacity: 0.9;
+}
+
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 90px;
+  row-gap: 42px;
+}
+
+
+.hobby h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.hobby p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.85;
+  max-width: 360px;
+}
+
+
+.hobby .line {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: 1px;
+  background: rgba(231, 220, 196, 0.6);
+  margin-top: 14px;
+}
+
+
+@media (max-width: 900px) {
+  .hobbies-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .hobby p,
+  .hobby .line {
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 980px){
+  .edu-top{
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+  .edu-bottom{
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+  .edu-desc{
+    max-width: 100%;
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .about-top {
+    grid-template-columns: 1fr;
+  }
+
+  .about-title {
+    font-size: 56px;
+  }
+
+  .about-image {
+    height: 260px;
+  }
+}
+
+
+
+@media (max-width: 900px){
+  .nav{ gap: 22px; flex-wrap: wrap; }
+  .nav a{ font-size: 16px; }
+  .hero{ grid-template-columns: 90px 1fr; }
+  .side-pill{ width: 56px; }
+  .side-pill span{ font-size: 14px; }
+}
+
+@media (max-width: 650px){
+  .hero{ grid-template-columns: 1fr; }
+  .side-pill{ display:none; }
+  .big-name{ top: 58%; }
+  .portrait{ width: min(420px, 86vw); height: min(560px, 70vh); }
+}
