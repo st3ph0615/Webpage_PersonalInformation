@@ -68,13 +68,25 @@ body{
   align-items: center;
 }
 
-.hero-center{
-  position: relative;
-  height: calc(100vh - 86px);
-  display: grid;
-  place-items: center;
+.hero-center {
+  position: relative; /* IMPORTANT */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
+.hero-title {
+  position: absolute;
+  bottom: -40px; /* adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e8dcc5; /* match your beige tone */
+  opacity: 0.9;
+  z-index: 3; /* above image & text layers */
+}
 
 .side-pill{
   justify-self: center;
@@ -168,12 +180,6 @@ body{
   align-items: flex-start;
   gap: 40px;
 }
-
-
-.about-left{
-  width: 1000px; 
-}
-
 
 .about-right{
   width: 800px;     
@@ -332,7 +338,7 @@ body{
   font-size: 12px;
   line-height: 1.35;
   opacity: .78;
-  max-width: 430px;
+  max-width: 500px;
 }
 
 .edu-bottom{
@@ -405,7 +411,7 @@ body{
   font-size: 14px;
   line-height: 1.6;
   opacity: 0.85;
-  max-width: 360px;
+  max-width: 400px;
 }
 
 
