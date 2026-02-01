@@ -130,3 +130,90 @@ if (hero && bigFill && bigStroke && portrait) {
     portrait.style.transform = "translate(0, 0)";
   });
 }
+
+// ===== Portfolio filter + modal =====
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
+
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const filter = btn.dataset.filter;
+
+    projectCards.forEach(card => {
+      const tags = (card.dataset.tags || "").split(" ");
+      const show = filter === "all" || tags.includes(filter);
+
+      card.classList.toggle("hidden", !show);
+    });
+  });
+});
+
+// Modal
+const modal = document.querySelector(".project-modal");
+const modalBackdrop = document.querySelector(".project-modal__backdrop");
+const modalClose = document.querySelector(".project-modal__close");
+const modalImg = document.querySelector(".project-modal__img");
+const modalTitle = document.querySelector(".project-modal__title");
+const modalDesc = document.querySelector(".project-modal__desc");
+const modalTech = document.querySelector(".project-modal__tech");
+const modalLink = document.querySelector(".project-modal__link");
+
+document.querySelectorAll(".project-open").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (!modal) return;
+
+    modalTitle.textContent = btn.dataset.title || "Project";
+    modalDesc.textContent = btn.dataset.desc || "";
+    modalTech.textContent = btn.dataset.tech ? `Tech: ${btn.dataset.tech}` : "";
+    modalImg.src = btn.dataset.img || "";
+    modalLink.href = btn.dataset.link || "#";
+
+    modal.classList.add("show");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function closeModal(){
+  if (!modal) return;
+  modal.classList.remove("show");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+modalBackdrop?.addEventListener("click", closeModal);
+modalClose?.addEventListener("click", closeModal);
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+// ===== Skills bar fill on scroll (reliable) =====
+window.addEventListener("DOMContentLoaded", () => {
+  const skillsSection = document.querySelector("#skills");
+  const skillRows = document.querySelectorAll(".skill-row");
+
+  if (!skillsSection || !skillRows.length) return;
+
+  const fillBars = () => {
+    skillRows.forEach(row => {
+      const level = row.getAttribute("data-level") || "0";
+      const fill = row.querySelector(".skill-fill");
+      if (fill) fill.style.width = `${level}%`;
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        fillBars();
+        observer.disconnect(); // run once
+      }
+    });
+  }, { threshold: 0.25 });
+
+  observer.observe(skillsSection);
+});
+
